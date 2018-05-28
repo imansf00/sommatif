@@ -1,0 +1,51 @@
+public class mainActivity {
+package com.example.iman.sommatif
+
+import android.os.Bundle
+import android.support.design.widget.BottomNavigationView
+import android.support.v7.app.AppCompatActivity
+import android.util.Log
+import com.example.iman.sommatif.R.id.message
+import com.example.iman.sommatif.R.styleable.View
+import kotlinx.android.synthetic.main.activity_sommatif.*
+
+    class sommatif : AppCompatActivity() {
+
+        inner class Main : ActionBarActivity(), View.OnClickListener// do your stuff
+
+        private val mOnNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
+                when (item.itemId) {
+            R.id.navigation_home -> {
+                message.setText(R.string.title_home)
+                return@OnNavigationItemSelectedListener true
+            }
+            R.id.navigation_dashboard -> {
+                message.setText(R.string.title_dashboard)
+                return@OnNavigationItemSelectedListener true
+            }
+            R.id.navigation_notifications -> {
+                message.setText(R.string.title_notifications)
+                return@OnNavigationItemSelectedListener true
+            }
+        }
+            false
+        }
+
+        Button btnRecommended = (Button)(findViewById(R.id.btnRecommended));
+        btnRecommended.setOnClickListener (new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View b) {
+                Log.i(TAG, "Button was clicked!");
+            }
+        });
+    }
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_sommatif)
+
+        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
+    }
+}
+
+}
