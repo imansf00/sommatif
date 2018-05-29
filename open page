@@ -1,0 +1,72 @@
+package sommatif;
+
+import java.awt.BorderLayout;
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+
+public class openpage extends JFrame {
+
+	private JPanel contentPane;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					openpage frame = new openpage();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the frame.
+	 */
+	public openpage() {
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 350, 530);
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
+		
+		JButton BooksButton = new JButton("My Books");
+		BooksButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				booksPage books = new booksPage();
+				
+			}
+		});
+		BooksButton.setBounds(0, 443, 105, 48);
+		contentPane.add(BooksButton);
+		
+		JButton SearchButton = new JButton("Search");
+		SearchButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				searchPage search = new searchPage();
+			}
+		});
+		SearchButton.setBounds(108, 444, 111, 47);
+		contentPane.add(SearchButton);
+		
+		JButton FriendsButton = new JButton("Friends");
+		FriendsButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				friendsPage friends = new friendsPage();
+			}
+		});
+		FriendsButton.setBounds(223, 444, 111, 47);
+		contentPane.add(FriendsButton);
+	}
+}
