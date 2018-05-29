@@ -45,6 +45,7 @@ public class openpage extends JFrame {
 		BooksButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				booksPage books = new booksPage();
+				books.setVisible((true));
 				
 			}
 		});
@@ -55,6 +56,7 @@ public class openpage extends JFrame {
 		SearchButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				searchPage search = new searchPage();
+				search.setVisible(true);
 			}
 		});
 		SearchButton.setBounds(108, 444, 111, 47);
@@ -64,6 +66,7 @@ public class openpage extends JFrame {
 		FriendsButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				friendsPage friends = new friendsPage();
+				friends.setVisible(true);
 			}
 		});
 		FriendsButton.setBounds(223, 444, 111, 47);
