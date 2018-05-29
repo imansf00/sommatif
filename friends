@@ -2,7 +2,10 @@ package sommatif;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
@@ -32,11 +35,38 @@ public class friendsPage extends openpage {
 	 */
 	public friendsPage() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 450, 530);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);
 	}
+	
+	JButton BooksButton = new JButton("My Books");
+	BooksButton.addActionListener(new ActionListener() {
+		public void actionPerformed(ActionEvent e) {
+			booksPage books = new booksPage();
+			books.setVisible((true));
+			
+		}
+	});
+	BooksButton.setBounds(0, 443, 105, 48);
+	contentPane.add(BooksButton);
+	
+	JButton SearchButton = new JButton("Search");
+	SearchButton.addActionListener(new ActionListener() {
+		public void actionPerformed(ActionEvent e) {
+			searchPage search = new searchPage();
+			search.setVisible(true);
+		}
+	});
+	SearchButton.setBounds(108, 444, 111, 47);
+	contentPane.add(SearchButton);
+	
+	JButton FriendsButton = new JButton("Friends");
+	FriendsButton.addActionListener(new ActionListener() {
+		public void actionPerformed(ActionEvent arg0) {
+			friendsPage friends = new friendsPage();
+			friends.setVisible(true);
 
 }
