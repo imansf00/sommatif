@@ -10,6 +10,31 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
+import java.awt.BorderLayout;
+import java.util.*;
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+import java.awt.FlowLayout;
+import javax.swing.JButton;
+import javax.swing.GroupLayout;
+import javax.swing.GroupLayout.Alignment;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.LayoutStyle.ComponentPlacement;
+import java.awt.Font;
+import javax.swing.JTextField;
+import java.awt.event.ActionListener;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
+import java.nio.file.Path;
+import java.awt.event.ActionEvent;
+import javax.swing.JPasswordField;
+
 public class openpage extends JFrame {
 
 	private JPanel contentPane;
@@ -71,5 +96,91 @@ public class openpage extends JFrame {
 		});
 		FriendsButton.setBounds(223, 444, 111, 47);
 		contentPane.add(FriendsButton);
-	}
+	
+	public class loginSystem extends JFrame {
+
+		private JPanel contentPane;
+		private JTextField enterUsername;
+		
+		File loginF = new File("contacts.txt");
+		public String username;
+		public String password;
+		private JPasswordField enterPassword;
+
+		/**
+		 * Launch the application.
+		 */
+		public static void main(String[] args) {
+			EventQueue.invokeLater(new Runnable() {
+				public void run() {
+					try {
+						loginSystem frame = new loginSystem();
+						frame.setVisible(true);
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
+				}
+			});
+		}
+		JButton btnLogin = new JButton("Login");
+		btnLogin.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (loginF.exists()) {
+					try {
+						//gets information from the user
+						String username = enterUsername.getText();
+						String password = String.valueOf(enterPassword.getPassword());
+						String account = username + ", " + password;
+						
+						//checks to see if the login information is in the file
+						Scanner ask = new Scanner(loginF);
+						boolean found = false;
+						while (ask.hasNextLine()) {
+							String finder = ask.nextLine(); //checks the line by line
+							if (finder.equals(account)) {
+								JOptionPane.showMessageDialog(null, "You are now logged in!");
+								found = true;
+							}
+						}
+						if (!found) {
+							JOptionPane.showMessageDialog(null, "Your username or password is incorrect.");
+							enterUsername.setText(null);
+							enterPassword.setText(null);
+						}
+					}
+					catch (IOException ex) {
+						JOptionPane.showMessageDialog(null, "Error!");
+					}
+				}
+			}
+		});
+				
+		
+		JLabel lblUsername = new JLabel("Username:");
+		lblUsername.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		
+		JLabel lblPassword = new JLabel("Password:");
+		lblPassword.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		
+		enterUsername = new JTextField();
+		enterUsername.setColumns(10);
+		
+		enterPassword = new JPasswordField();
+		
+		JButton btnRegister = new JButton("Register");
+		btnRegister.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				createAccount newAccount = new createAccount();
+				newAccount.setVisible(true);
+			}
+		});
+		GroupLayout gl_contentPane = new GroupLayout(contentPane);
+		gl_contentPane.setHorizontalGroup(
+			gl_contentPane.createParallelGroup(Alignment.TRAILING)
+				.addGroup(Alignment.LEADING, gl_contentPane.createSequentialGroup()
+
+
+	
 }
+
+
